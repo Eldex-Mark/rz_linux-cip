@@ -4309,6 +4309,12 @@ static const struct of_device_id platform_of_match[] = {
 		.compatible = "winstar,wf35ltiacd",
 		.data = &winstar_wf35ltiacd,
 	}, {
+		.compatible = "myirtft_panel_7inch",
+		.data = &myir_tft_7inch,
+	}, {
+		.compatible = "ronboetft_panel_5inch",
+		.data = &ronboe_tft_5inch,
+	}, {		
 		/* Must be the last entry */
 		.compatible = "panel-dpi",
 		.data = &panel_dpi,
