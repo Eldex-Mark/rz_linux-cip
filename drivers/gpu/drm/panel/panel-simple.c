@@ -3908,6 +3908,62 @@ static const struct panel_desc arm_rtsm = {
 	.bus_format = MEDIA_BUS_FMT_RGB888_1X24,
 };
 
+/* myir tft 7-inch */
+static const struct display_timing myir_tft_7inch_mode = {
+	.pixelclock = {33000000,33000000,33000000},
+	.hactive = {800,800,800},
+	.hfront_porch = {210,210,210},
+	.hback_porch = {46,46,46},
+	.hsync_len = {1,1,1},
+	.vactive = {480,480,480},
+	.vfront_porch = {23,23,23},
+	.vback_porch = {22,22,22},
+	.vsync_len = {20,20,20},
+};
+
+static const struct panel_desc myir_tft_7inch = {
+	.timings = &myir_tft_7inch_mode,
+	.num_timings = 1,
+	.bpc = 6,
+	.size = {
+		.width = 154,
+		.height = 86,
+
+	},
+	.bus_format = MEDIA_BUS_FMT_RGB888_1X24,
+     	.bus_flags = DRM_BUS_FLAG_DE_HIGH | DRM_BUS_FLAG_PIXDATA_SAMPLE_NEGEDGE,
+	.connector_type = DRM_MODE_CONNECTOR_DPI,
+};
+
+/* Ronboe tft 5-inch */
+static const struct display_timing ronboe_tft_5inch_mode = {
+	.pixelclock = {33300000,33300000,33300000},
+	.hactive = {800,800,800},
+	.hfront_porch = {210,210,210},
+	.hback_porch = {46,46,46},
+	.hsync_len = {1,1,1},
+	.vactive = {480,480,480},
+	.vfront_porch = {22,22,22},
+	.vback_porch = {23,23,23},
+	.vsync_len = {20,20,20},
+};
+
+static const struct panel_desc ronboe_tft_5inch = {
+	.timings = &ronboe_tft_5inch_mode,
+	.num_timings = 1,
+	.bpc = 6,
+	.size = {
+		.width = 154,
+		.height = 86,
+
+	},
+	.bus_format = MEDIA_BUS_FMT_RGB888_1X24,
+      	.bus_flags = DRM_BUS_FLAG_DE_HIGH | DRM_BUS_FLAG_PIXDATA_SAMPLE_POSEDGE,
+	.connector_type = DRM_MODE_CONNECTOR_DPI,
+};
+
+
+
 static const struct of_device_id platform_of_match[] = {
 	{
 		.compatible = "ampire,am-1280800n3tzqw-t00h",
