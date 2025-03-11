@@ -28,7 +28,7 @@
 
 //&cpu_dai {
 //	sound-dai = <&ssi0>;
-//};
+//grep };
 
 //&codec_dai {
 //	clocks = <&versa3 3>;
