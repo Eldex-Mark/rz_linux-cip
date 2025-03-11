@@ -118,21 +118,21 @@
 	status = "okay";
 };
 
-&ssi1 {
-	pinctrl-0 = <&ssi1_pins>;
-	pinctrl-names = "default";
+//&ssi1 {
+//	pinctrl-0 = <&ssi1_pins>;
+//	pinctrl-names = "default";
 
-	status = "okay";
+//	status = "okay";
 
-	ports {
-		i2s2_port0: port@0 {
-			i2s2_cpu_endpoint: endpoint {
-				remote-endpoint = <&codec_endpoint>;
-				dai-format = "i2s";
-			};
-		};
-	};
-};
+//	ports {
+//		i2s2_port0: port@0 {
+//			i2s2_cpu_endpoint: endpoint {
+//				remote-endpoint = <&codec_endpoint>;
+//				dai-format = "i2s";
+//			};
+//		};
+//	};
+//};
 
 &vccq_sdhi1 {
 	gpios = <&pinctrl RZG2L_GPIO(39, 1) GPIO_ACTIVE_HIGH>;
