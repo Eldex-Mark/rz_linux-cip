@@ -118,7 +118,7 @@
 
 	panel@0 {
 		compatible = "ronboetft_panel_5inch";
-		// backlight = <&lcd_backlight>;
+		backlight = <&lcd_backlight>;
 		power-supply = <&reg_3p3v>;
 		enable-gpios = <&pinctrl RZG2L_GPIO(42, 4) GPIO_ACTIVE_HIGH>;// backlight
 		status = "okay";
