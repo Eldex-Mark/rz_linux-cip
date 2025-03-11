@@ -9,34 +9,34 @@
 #include <dt-bindings/pinctrl/rzg2l-pinctrl.h>
 
 &pinctrl {
-	pinctrl-0 = <&sound_clk_pins>;
-	pinctrl-names = "default";
+//	pinctrl-0 = <&sound_clk_pins>;
+//	pinctrl-names = "default";
 
-	can0_pins: can0 {
-		pinmux = <RZG2L_PORT_PINMUX(10, 1, 2)>, /* TX */
-			 <RZG2L_PORT_PINMUX(11, 0, 2)>; /* RX */
-	};
+//	can0_pins: can0 {
+//		pinmux = <RZG2L_PORT_PINMUX(10, 1, 2)>, /* TX */
+//			 <RZG2L_PORT_PINMUX(11, 0, 2)>; /* RX */
+//	};
 
 	/* SW7 should be at position 2->3 so that GPIO8_CAN0_STB line is activated */
-	can0-stb-hog {
-		gpio-hog;
-		gpios = <RZG2L_GPIO(42, 2) GPIO_ACTIVE_HIGH>;
-		output-low;
-		line-name = "can0_stb";
-	};
+//	can0-stb-hog {
+//		gpio-hog;
+//		gpios = <RZG2L_GPIO(42, 2) GPIO_ACTIVE_HIGH>;
+//		output-low;
+//		line-name = "can0_stb";
+//	};
 
-	can1_pins: can1 {
-		pinmux = <RZG2L_PORT_PINMUX(12, 1, 2)>, /* TX */
-			 <RZG2L_PORT_PINMUX(13, 0, 2)>; /* RX */
-	};
+//	can1_pins: can1 {
+//		pinmux = <RZG2L_PORT_PINMUX(12, 1, 2)>, /* TX */
+//			 <RZG2L_PORT_PINMUX(13, 0, 2)>; /* RX */
+//	};
 
 	/* SW8 should be at position 2->3 so that GPIO9_CAN1_STB line is activated */
-	can1-stb-hog {
-		gpio-hog;
-		gpios = <RZG2L_GPIO(42, 3) GPIO_ACTIVE_HIGH>;
-		output-low;
-		line-name = "can1_stb";
-	};
+//	can1-stb-hog {
+//		gpio-hog;
+//		gpios = <RZG2L_GPIO(42, 3) GPIO_ACTIVE_HIGH>;
+//		output-low;
+//		line-name = "can1_stb";
+//	};
 
 	gpt4_pins: gpt4 {
 		pinmux = <RZG2L_PORT_PINMUX(43, 0, 2)>, /* Channel A */
@@ -122,10 +122,10 @@
 		};
 	};
 
-	sound_clk_pins: sound_clk {
-		pins = "AUDIO_CLK1", "AUDIO_CLK2";
-		input-enable;
-	};
+//	sound_clk_pins: sound_clk {
+//		pins = "AUDIO_CLK1", "AUDIO_CLK2";
+//		input-enable;
+//	};
 
 	spi1_pins: spi1 {
 		pinmux = <RZG2L_PORT_PINMUX(44, 0, 1)>, /* CK */
