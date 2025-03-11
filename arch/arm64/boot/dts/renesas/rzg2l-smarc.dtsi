@@ -111,12 +111,12 @@
 };
 #endif
 
-&ssi0 {
-	pinctrl-0 = <&ssi0_pins>;
-	pinctrl-names = "default";
+//&ssi0 {
+//	pinctrl-0 = <&ssi0_pins>;
+//	pinctrl-names = "default";
 
-	status = "okay";
-};
+//	status = "okay";
+//};
 
 //&ssi1 {
 //	pinctrl-0 = <&ssi1_pins>;
