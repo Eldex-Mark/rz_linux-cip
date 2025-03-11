@@ -139,14 +139,14 @@
 	};
 };
 
-&adc {
-	pinctrl-0 = <&adc_pins>;
-	pinctrl-names = "default";
-	status = "okay";
+//&adc {
+//	pinctrl-0 = <&adc_pins>;
+//	pinctrl-names = "default";
+//	status = "okay";
 
-	/delete-node/ channel@6;
-	/delete-node/ channel@7;
-};
+//	/delete-node/ channel@6;
+//	/delete-node/ channel@7;
+//};
 
 &eth0 {
 	pinctrl-0 = <&eth0_pins>;
