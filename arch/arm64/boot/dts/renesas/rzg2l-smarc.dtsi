@@ -26,9 +26,9 @@
 	};
 };
 
-&cpu_dai {
-	sound-dai = <&ssi0>;
-};
+//&cpu_dai {
+//	sound-dai = <&ssi0>;
+//};
 
 //&codec_dai {
 //	clocks = <&versa3 3>;
