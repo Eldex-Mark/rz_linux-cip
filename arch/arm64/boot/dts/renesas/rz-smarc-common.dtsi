@@ -18,8 +18,6 @@
 		ethernet0 = &eth0;
 
 		serial0 = &scif0;
-		serial1 = &scif1;
-		serial2 = &scif2;
 		serial3 = &scif3;
 
 		i2c0 = &i2c0;
@@ -34,42 +32,6 @@
                 stdout-path = "serial0:115200n8";
         };
 
-	memory@48000000 {
-		device_type = "memory";
-		/* first 128MB is reserved for secure area. */
-		reg = <0x0 0x48000000 0x0 0x78000000>;
-	};
-
-	reserved-memory {
-		#address-cells = <2>;
-		#size-cells = <2>;
-		ranges;
-
-		global_cma: linux,cma@58000000 {
-			compatible = "shared-dma-pool";
-			linux,cma-default;
-			reusable;
-			reg = <0x0 0x58000000 0x0 0x10000000>;
-		};
-		mmp_reserved: linux,multimedia {
-			compatible = "shared-dma-pool";
-			reusable;
-			reg = <0x00000000 0x68000000 0x0 0x8000000>;
-		};
-	};
-
-	mmngr {
-		compatible = "renesas,mmngr";
-		memory-region = <&mmp_reserved>;
-	};
-
-	mmngrbuf {
-		compatible = "renesas,mmngrbuf";
-	};
-
-	vspm_if {
-		compatible = "renesas,vspm_if";
-	};
 	vring-ctl0@43000000 {
                 compatible = "vring_uio";
                 reg = <0x0 0x43000000 0x0 0x100000>;
@@ -363,16 +325,6 @@
 	scif0_pins: scif0 {
 			pinmux = <RZG2L_PORT_PINMUX(38, 0, 1)>, /* TxD */
 						<RZG2L_PORT_PINMUX(38, 1, 1)>; /* RxD */
-	};
-
-	scif1_pins: scif1 {
-			pinmux = <RZG2L_PORT_PINMUX(40, 0, 1)>, /* TxD */
-						<RZG2L_PORT_PINMUX(40, 1, 1)>; /* RxD */
-	};
-
-	scif2_pins: scif2 {
-			pinmux = <RZG2L_PORT_PINMUX(48, 0, 1)>, /* TxD */
-						<RZG2L_PORT_PINMUX(48, 1, 1)>;/* RxD */
 	};
 
 	scif3_pins: scif3 {
