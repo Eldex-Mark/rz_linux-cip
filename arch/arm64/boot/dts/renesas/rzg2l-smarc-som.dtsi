@@ -92,6 +92,21 @@
 		regulator-boot-on;
 		regulator-always-on;
 	};
+	
+	usb0_vbus_otg: regulator-usb0-vbus-otg {
+			compatible = "regulator-fixed";
+
+			regulator-name = "USB0_VBUS_OTG";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+	};
+	
+	reg_5p0v: regulator-reg_5p0v {
+			compatible = "regulator-fixed";
+			regulator-name = "fixed-5.0V";
+			regulator-min-microvolt = <5000000>;
+			regulator-max-microvolt = <5000000>;
+	};		
 
 	vccq_sdhi0: regulator-vccq-sdhi0 {
 		compatible = "regulator-gpio";

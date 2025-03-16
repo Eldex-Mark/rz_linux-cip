@@ -89,9 +89,9 @@
 };
 #endif /* MTU3_COUNTER_Z_PHASE_SIGNAL */
 
-&spi1 {
-	status = "disabled";
-};
+//&spi1 {
+//	status = "disabled";
+//};
 #endif /* PMOD_MTU3 */
 
 /*
