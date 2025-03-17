@@ -9,5 +9,5 @@
 #include "r9a07g044.dtsi"
 
 / {
-	compatible = "renesas,r9a07g044l2", "renesas,r9a07g044";
+	compatible = "renesas,r9a07g044l2-evk", "renesas,r9a07g044l2", "renesas,r9a07g044";
 };
