@@ -425,7 +425,7 @@
 			status = "disabled";
 		};
 
-/*		scif1: serial@1004bc00 {
+		scif1: serial@1004bc00 {
 			compatible = "renesas,scif-r9a07g044";
 			reg = <0 0x1004bc00 0 0x400>;
 			interrupts = <GIC_SPI 385 IRQ_TYPE_LEVEL_HIGH>,
@@ -463,7 +463,7 @@
 			power-domains = <&cpg>;
 			resets = <&cpg R9A07G044_SCIF2_RST_SYSTEM_N>;
 			status = "disabled";
-		};*/
+		};
 
 		scif3: serial@1004c400 {
 			compatible = "renesas,scif-r9a07g044";

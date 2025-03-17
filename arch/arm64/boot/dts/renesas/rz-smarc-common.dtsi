@@ -18,6 +18,8 @@
 		ethernet0 = &eth0;
 
 		serial0 = &scif0;
+		serial1 = &scif1;
+		serial2 = &scif2;
 		serial3 = &scif3;
 
 		i2c0 = &i2c0;
@@ -326,6 +328,16 @@
 			pinmux = <RZG2L_PORT_PINMUX(38, 0, 1)>, /* TxD */
 						<RZG2L_PORT_PINMUX(38, 1, 1)>; /* RxD */
 	};
+	
+	scif1_pins: scif1 {
+			pinmux = <RZG2L_PORT_PINMUX(40, 0, 1)>, /* TxD */
+						<RZG2L_PORT_PINMUX(40, 1, 1)>; /* RxD */
+	};
+
+	scif2_pins: scif2 {
+			pinmux = <RZG2L_PORT_PINMUX(48, 0, 1)>, /* TxD */
+						<RZG2L_PORT_PINMUX(48, 1, 1)>;/* RxD */
+	};	
 
 	scif3_pins: scif3 {
 			pinmux = <RZG2L_PORT_PINMUX(0, 0, 5)>, /* TxD */
