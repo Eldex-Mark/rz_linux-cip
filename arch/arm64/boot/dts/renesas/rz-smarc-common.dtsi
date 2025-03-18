@@ -24,6 +24,7 @@
 
 		i2c0 = &i2c0;
 		i2c1 = &i2c1;
+		i2c3 = &i2c3;
 
 		mmc0 = &sdhi0;
 		mmc1 = &sdhi1;
@@ -236,6 +237,11 @@
 			pins = "RIIC1_SDA", "RIIC1_SCL";
 			input-enable;
 	};
+	
+	i2c3_pins: i2c3 {
+			pinmux = <RZG2L_PORT_PINMUX(18, 0, 3)>, /* SDA */
+					<RZG2L_PORT_PINMUX(18, 1, 3)>; /* SCL */
+	};	
 
 	adc_pins: adc {
 			pinmux = <RZG2L_PORT_PINMUX(48, 4, 3)>; /* ADC_TRG */
@@ -575,6 +581,19 @@
             touchscreen-size-x=<800>;
             touchscreen-size-y=<480>;
     };	
+};
+
+&i2c3 {
+	pinctrl-0 = <&i2c3_pins>;
+	pinctrl-names = "default";
+	clock-frequency = <400000>;
+	status = "okay";
+
+	E2PROM:24C256C@50 {
+		compatible = "atmel,24c256";
+		reg = <0x50>;
+		pagesize = <64>;
+	};
 };
 
 /* console */
