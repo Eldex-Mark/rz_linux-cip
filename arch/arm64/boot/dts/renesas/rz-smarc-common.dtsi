@@ -573,7 +573,7 @@
 	status = "okay";
 
     ft5x06: ft5x06@38 {
-        compatible = "edt,edt-ft5506";
+        compatible = "focaltech,ft5426","edt,edt-ft5506";
             reg = <0x38>;
             interrupt-parent = <&pinctrl>;
             interrupts = <RZG2L_GPIO(41, 0) IRQ_TYPE_EDGE_FALLING>;
