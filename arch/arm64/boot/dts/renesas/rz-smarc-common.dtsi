@@ -627,8 +627,13 @@
         dr_mode = "otg";
         status = "okay";
 };
+
 &phyrst {
         status = "okay";
+        
+        usb0_vbus_otg: regulator-vbus {
+        	regulator-name = "vbus";
+        	};
 };
 
 &mtu3 {
@@ -658,11 +663,3 @@
 	};
 };
 
-&vccq_sdhi1 {
-	gpios = <&pinctrl RZG2L_GPIO(6, 1) GPIO_ACTIVE_HIGH>;
-};
-
-&vmmc_sdhi1 {
-	gpios = <&pinctrl RZG2L_GPIO(0, 3) GPIO_ACTIVE_HIGH>;
-	enable-active-high;
-};
