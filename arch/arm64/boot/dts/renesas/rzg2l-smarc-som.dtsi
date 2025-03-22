@@ -21,8 +21,7 @@
 / {
 	aliases {
 		ethernet0 = &eth0;
-//		ethernet1 = &eth1;
-	
+		ethernet1 = &eth1;
 	};
 
 	chosen {
@@ -92,21 +91,6 @@
 		regulator-boot-on;
 		regulator-always-on;
 	};
-	
-	usb0_vbus_otg: regulator-usb0-vbus-otg {
-			compatible = "regulator-fixed";
-
-			regulator-name = "USB0_VBUS_OTG";
-			regulator-min-microvolt = <5000000>;
-			regulator-max-microvolt = <5000000>;
-	};
-	
-	reg_5p0v: regulator-reg_5p0v {
-			compatible = "regulator-fixed";
-			regulator-name = "fixed-5.0V";
-			regulator-min-microvolt = <5000000>;
-			regulator-max-microvolt = <5000000>;
-	};		
 
 	vccq_sdhi0: regulator-vccq-sdhi0 {
 		compatible = "regulator-gpio";
@@ -120,32 +104,6 @@
 		regulator-always-on;
 	};
 
-	panel_powr2: regulator-panel_powr2 {
-		compatible = "regulator-fixed";
-		regulator-name = "panel-power2";
-		regulator-min-microvolt = <3300000>;
-		regulator-max-microvolt = <3300000>;
-		gpios = <&pinctrl RZG2L_GPIO(37, 2) GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-		regulator-boot-on;
-		regulator-always-on;
-	};
-
-	panel@0 {
-		compatible = "ronboetft_panel_5inch";
-//		backlight = <&lcd_backlight>;
-		power-supply = <&reg_3p3v>;
-		enable-gpios = <&pinctrl RZG2L_GPIO(42, 4) GPIO_ACTIVE_HIGH>;// backlight
-		status = "okay";
-		no-hpd;
-
-		port {
-			panel_lcd_in: endpoint {
-				remote-endpoint = <&du_out_rgb>;
-			};
-		};
-	};	
-
 	/* 32.768kHz crystal */
 	x2: x2-clock {
 		compatible = "fixed-clock";
@@ -154,14 +112,14 @@
 	};
 };
 
-//&adc {
-//	pinctrl-0 = <&adc_pins>;
-//	pinctrl-names = "default";
-//	status = "okay";
+&adc {
+	pinctrl-0 = <&adc_pins>;
+	pinctrl-names = "default";
+	status = "okay";
 
-//	/delete-node/ channel@6;
-//	/delete-node/ channel@7;
-//};
+	/delete-node/ channel@6;
+	/delete-node/ channel@7;
+};
 
 &eth0 {
 	pinctrl-0 = <&eth0_pins>;
@@ -192,34 +150,34 @@
 	};
 };
 
-//&eth1 {
-//	pinctrl-0 = <&eth1_pins>;
-//	pinctrl-names = "default";
-//	phy-handle = <&phy1>;
-//	phy-mode = "rgmii-id";
-//	status = "okay";
-//
-//	phy1: ethernet-phy@7 {
-//		compatible = "ethernet-phy-id0022.1640",
-//			     "ethernet-phy-ieee802.3-c22";
-//		reg = <7>;
-//		rxc-skew-psec = <2400>;
-//		txc-skew-psec = <2400>;
-//		rxdv-skew-psec = <0>;
-//		txen-skew-psec = <0>;
-//		rxd0-skew-psec = <0>;
-//		rxd1-skew-psec = <0>;
-//		rxd2-skew-psec = <0>;
-//		rxd3-skew-psec = <0>;
-//		txd0-skew-psec = <0>;
-//		txd1-skew-psec = <0>;
-//		txd2-skew-psec = <0>;
-//		txd3-skew-psec = <0>;
+&eth1 {
+	pinctrl-0 = <&eth1_pins>;
+	pinctrl-names = "default";
+	phy-handle = <&phy1>;
+	phy-mode = "rgmii-id";
+	status = "okay";
 
-//		interrupt-parent = <&pinctrl>;
-//		interrupts = <RZG2L_GPIO(1, 1) IRQ_TYPE_LEVEL_LOW>;
-//	};
-//};
+	phy1: ethernet-phy@7 {
+		compatible = "ethernet-phy-id0022.1640",
+			     "ethernet-phy-ieee802.3-c22";
+		reg = <7>;
+		rxc-skew-psec = <2400>;
+		txc-skew-psec = <2400>;
+		rxdv-skew-psec = <0>;
+		txen-skew-psec = <0>;
+		rxd0-skew-psec = <0>;
+		rxd1-skew-psec = <0>;
+		rxd2-skew-psec = <0>;
+		rxd3-skew-psec = <0>;
+		txd0-skew-psec = <0>;
+		txd1-skew-psec = <0>;
+		txd2-skew-psec = <0>;
+		txd3-skew-psec = <0>;
+
+		interrupt-parent = <&pinctrl>;
+		interrupts = <RZG2L_GPIO(1, 1) IRQ_TYPE_LEVEL_LOW>;
+	};
+};
 
 &extal_clk {
 	clock-frequency = <24000000>;
@@ -276,78 +234,31 @@
 		};
 	};
 
-//	eth1_pins: eth1 {
-//		txc {
-//			pinmux = <RZG2L_PORT_PINMUX(29, 0, 1)>; /* ET0_TXC */
-//			power-source = <1800>;
-//			output-enable;
-//		};
+	eth1_pins: eth1 {
+		txc {
+			pinmux = <RZG2L_PORT_PINMUX(29, 0, 1)>; /* ET0_TXC */
+			power-source = <1800>;
+			output-enable;
+		};
 
-//		mux {
-//			pinmux = <RZG2L_PORT_PINMUX(37, 2, 1)>, /* ET1_LINKSTA */
-//				 <RZG2L_PORT_PINMUX(37, 0, 1)>, /* ET1_MDC */
-//				 <RZG2L_PORT_PINMUX(37, 1, 1)>, /* ET1_MDIO */
-//				 <RZG2L_PORT_PINMUX(29, 1, 1)>, /* ET1_TX_CTL */
-//				 <RZG2L_PORT_PINMUX(30, 0, 1)>, /* ET1_TXD0 */
-//				 <RZG2L_PORT_PINMUX(30, 1, 1)>, /* ET1_TXD1 */
-//				 <RZG2L_PORT_PINMUX(31, 0, 1)>, /* ET1_TXD2 */
-//				 <RZG2L_PORT_PINMUX(31, 1, 1)>, /* ET1_TXD3 */
-//				 <RZG2L_PORT_PINMUX(33, 1, 1)>, /* ET1_RXC */
-//				 <RZG2L_PORT_PINMUX(34, 0, 1)>, /* ET1_RX_CTL */
-//				 <RZG2L_PORT_PINMUX(34, 1, 1)>, /* ET1_RXD0 */
-//				 <RZG2L_PORT_PINMUX(35, 0, 1)>, /* ET1_RXD1 */
-//				 <RZG2L_PORT_PINMUX(35, 1, 1)>, /* ET1_RXD2 */
-//				 <RZG2L_PORT_PINMUX(36, 0, 1)>; /* ET1_RXD3 */
-//			power-source = <1800>;
-//		};
-//	};
-
-    du_pins: du {
-            groups = "disp_bgr888", "disp_sync", "disp_de", "disp_clk";
-            function = "disp";
-            data {
-                    pinmux = <RZG2L_PORT_PINMUX(7, 2, 1)>,
-                             <RZG2L_PORT_PINMUX(8, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(8, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(8, 2, 1)>,
-                             <RZG2L_PORT_PINMUX(9, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(9, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(10, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(10, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(11, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(11, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(12, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(12, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(13, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(13, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(13, 2, 1)>,
-                             <RZG2L_PORT_PINMUX(14, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(14, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(15, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(15, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(16, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(16, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(17, 0, 1)>,
-                             <RZG2L_PORT_PINMUX(17, 1, 1)>,
-                             <RZG2L_PORT_PINMUX(17, 2, 1)>;
-                    drive-strength = <2>;
-            };
-
-            sync {
-                    pinmux = <RZG2L_PORT_PINMUX(6, 1, 1)>, /* HSYNC */
-                                 <RZG2L_PORT_PINMUX(7, 0, 1)>; /* VSYNC */
-                    drive-strength = <2>;
-            };
-
-            de {
-                    pinmux = <RZG2L_PORT_PINMUX(7, 1, 1)>; /* DE */
-                        drive-strength = <2>;
-            };
-
-            clk {
-                    pinmux = <RZG2L_PORT_PINMUX(6, 0, 1)>; /* CLK */
-            };
-    };
+		mux {
+			pinmux = <RZG2L_PORT_PINMUX(37, 2, 1)>, /* ET1_LINKSTA */
+				 <RZG2L_PORT_PINMUX(37, 0, 1)>, /* ET1_MDC */
+				 <RZG2L_PORT_PINMUX(37, 1, 1)>, /* ET1_MDIO */
+				 <RZG2L_PORT_PINMUX(29, 1, 1)>, /* ET1_TX_CTL */
+				 <RZG2L_PORT_PINMUX(30, 0, 1)>, /* ET1_TXD0 */
+				 <RZG2L_PORT_PINMUX(30, 1, 1)>, /* ET1_TXD1 */
+				 <RZG2L_PORT_PINMUX(31, 0, 1)>, /* ET1_TXD2 */
+				 <RZG2L_PORT_PINMUX(31, 1, 1)>, /* ET1_TXD3 */
+				 <RZG2L_PORT_PINMUX(33, 1, 1)>, /* ET1_RXC */
+				 <RZG2L_PORT_PINMUX(34, 0, 1)>, /* ET1_RX_CTL */
+				 <RZG2L_PORT_PINMUX(34, 1, 1)>, /* ET1_RXD0 */
+				 <RZG2L_PORT_PINMUX(35, 0, 1)>, /* ET1_RXD1 */
+				 <RZG2L_PORT_PINMUX(35, 1, 1)>, /* ET1_RXD2 */
+				 <RZG2L_PORT_PINMUX(36, 0, 1)>; /* ET1_RXD3 */
+			power-source = <1800>;
+		};
+	};
 
 	qspi0_pins: qspi0 {
 		qspi0-data {
@@ -513,43 +424,4 @@
 
 &gpu {
 	mali-supply = <&reg_1p1v>;
-};
-
-/* MIPI DSI */
-&dsi0 {
-	status = "disabled";
-};
-
-
-&du {
-	pinctrl-0 = <&du_pins>;
-	pinctrl-names = "default";
-	status = "okay";
-
-	ports {
-		port@0 {
-			du_out_rgb: endpoint {
-				remote-endpoint = <&panel_lcd_in>;
-			};
-		};
-	};
-};
-
-&i2c1 {
-	pinctrl-0 = <&i2c1_pins>;
-	pinctrl-names = "default";
-	clock-frequency = <100000>;
-	status = "okay";
-
-    ft5x06: ft5x06@38 {
-        compatible = "edt,edt-ft5406", "edt,edt-ft5x06";
-            reg = <0x70>;
-            interrupt-parent = <&pinctrl>;
-            interrupts = <RZG2L_GPIO(41, 0) IRQ_TYPE_EDGE_FALLING>;
-            reset-gpios = <&pinctrl RZG2L_GPIO(41, 1) GPIO_ACTIVE_LOW>;
-            touchscreen-size-x=<800>;
-            touchscreen-size-y=<480>;
-    };
-
-
 };
