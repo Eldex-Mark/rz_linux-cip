@@ -201,7 +201,7 @@
 };
 
 &ostm2 {
-	status = "okay";
+	status = "disabled";
 };
 
 &pinctrl {
